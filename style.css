@@ -1,0 +1,347 @@
+* {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+  }
+  
+  .grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 70% 30%;
+    grid-template-areas: "sky"
+                        "ground";
+  }
+  
+  .sky {
+    grid-area: sky;
+    background-color: lightskyblue;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .cloud-1 {
+    bottom: 250px;
+    right: 600px;
+    height: 80px;
+    opacity: 0.6;
+    animation-name: cloudMove;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+  }
+  
+  .cloud-2 {
+    bottom: 350px;
+    left: 400px;
+    height: 80px;
+    opacity: 0.6;
+    animation-name: cloudMove;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes cloudMove {
+    0% {left: 0px; top:0px;}
+    25% {left: 10px; top:10px;}
+    50% {left: 30px; top:15px;}
+    75% {left: 50px; top:10px;}
+    100% {left: 0px; top:0px;}
+  }
+  
+  .ground {
+    grid-area: ground;
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    animation-name: groundMove;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  /* @keyframes groundMove {
+    0% {bottom:0px;}
+    50% {bottom:3px;}
+    100% {bottom:10px;}
+  } */
+
+  @keyframes groundMove {
+    from {transform: scale(1, 1);}
+    to {transform: scale(1, 1.03);}
+  }
+  
+  /* MAIN BODY */
+  .bus {
+    /* top: 46%;
+    left: 0%; */
+    transform: translateY(13%);
+    background-color: #E94934;
+    height: 250px;
+    width: 480px;
+    border-radius: 30px 60px 3px 0px;
+    animation-name: busMove;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes busMove {
+    from {top:0px;}
+   to {top:10px;}
+
+  }
+
+
+  .busFront {
+    top: 30px;
+    left: -488px;
+    background-color: inherit;
+    height: 220px;
+    width: 8px;
+    -webkit-clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  }
+  
+  .busFront::before {
+    content: '';
+    position: absolute;
+    top: 73px;
+    height: 9px;
+    width: 10px;
+    background-color: #F9D658;
+  }
+  
+  /* WHEELS */
+  /* Common Class */
+  .wheelRim {
+    background-color: #B03726;
+    height: 40px;
+    width: 80px;
+    border-radius: 45px 45px 0 0;
+    border: 4px solid #353335;
+    border-bottom: none;
+  }
+  
+  .wheelRim::before {
+    content: '';
+    position: absolute;
+    top: 38px;
+    left: -4px;
+    height: 4px;
+    width: 4px;
+    background-color: #353335;
+    border-radius: 50%;
+  }
+  
+  .wheelRim::after {
+    content: '';
+    position: absolute;
+    top: 38px;
+    left: 80px;
+    height: 4px;
+    width: 4px;
+    background-color: #353335;
+    border-radius: 50%;
+  }
+  
+  .frontRim {
+    top: 206px;
+    left: -360px;
+  }
+  
+  .backRim {
+    top: 206px;
+    left: 240px;
+  }
+  
+  /* Common Class */
+  .wheel {
+    height: 70px;
+    width: 70px;
+    background-color: #2D2825;
+    border-radius: 50%;
+    box-shadow: inset 0px 2px 0px 1px #534841;
+    animation-name: wheelSpin;
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes wheelSpin {
+    0% {transform: scale(1, 1);}
+    50% {transform: scale(1, 1.05);}
+    100% {transform: scale(1.05, 1);}
+  }
+  
+  .wheel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    height: 40px;
+    width: 40px;
+    background-color: #9BAAB3;
+    border-radius: 50%;
+  }
+  .wheel::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 32px;
+    width: 32px;
+    background-color: #82878E;
+    border-radius: 50%;
+  }
+  
+  .wheelNut {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    height: 15px;
+    width: 15px;
+    -webkit-clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+  clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    background-color: #9BAAB3;
+  }
+  
+  .frontWheel {
+    top: 40px;
+  }
+  
+  .backWheel {
+     top: 40px;
+  }
+  
+  /* WINDOWS */
+  .mainWindow {
+    position: relative;
+    height: 38px;
+    width: 65px;
+    border-radius: 5px;
+    border: 2px solid #2F2A26;
+    background-color: #BCDBEB;
+  }
+  
+  .backWindow {
+    border-radius: 5px 40px 5px 5px;
+    width: 75px;
+  }
+  
+  .slimWindow {
+    width: 30px;
+  }
+  
+  .frontWindow {
+    border-radius: 20px 5px 5px 5px;
+  }
+  
+  .driverWindow {
+    height: 50px;
+    width: 75px;
+    border-radius: 5px;
+    border: 2px solid #2F2A26;
+    background-color: #BCDBEB;
+    bottom: 66px;
+    left: -390px;
+    overflow: hidden;
+  }
+  
+  /* TOP DECK */
+  .topDeck {
+    height: 95px;
+    width: 470px;
+    bottom: 145px;
+    border-radius: inherit;
+  }
+  
+  .topWindows {
+    display: flex;
+    flex-direction: row;
+    bottom: 35px;
+    justify-content: space-between;
+    width: 460px;
+  }
+  
+  
+  /* DECK DIVIDE */
+  .deckDivide {
+    height: 9px;
+    background-color: #F9D658;
+    bottom: 35px;
+  }
+  
+  
+  /* BOTTOM DECK */
+  .bottomDeck {
+    /* background-color: yellow; */
+    height: 135px;
+    top: 115px;
+  }
+  
+  .bottomWindows {
+    display: flex;
+    flex-direction: row;
+  /*   justify-content: ; */
+    width: 300px;
+    bottom: 55px;
+  }
+  
+  .backDoor {
+    background-color: #B03726;
+    height: 120px;
+    width: 65px;
+    top: 5px;
+    left: 405px;
+    border-radius: 25px 2px 0 0;
+    border: 1.5px solid #af321f;
+  }
+  
+  .backDoor::before {
+    content: '';
+    height: 118px;
+    width: 5px;
+    background-color: #D4C7C8;
+    opacity: 0.6;
+    position: absolute;
+    left: 34px;
+    top: -1px;
+  }
+  
+  .backDoor::after {
+    content: '';
+    height: 8px;
+    width: 72px;
+    background-color: #5D5859;
+    position: absolute;
+    top: 117px;
+    left: -2px;
+  }
+  
+  .steeringWheel {
+    height: 18px;
+    width: 4px;
+    background-color: #2F2A26;
+    transform: rotate(20deg);
+    top: 38px;
+    right: 40px;
+  }
+  
+  .steeringWheel::before {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: -0.5px;
+    height: 30px;
+    width: 5px;
+    border-radius: 2px;
+    background-color: #2F2A26;
+    transform: rotate(90deg);
+  }
